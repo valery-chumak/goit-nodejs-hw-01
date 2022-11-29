@@ -1,5 +1,6 @@
 const contacts = require("./db/contacts");
-// const argv = require("yargs").argv;
+const argv = require("yargs").argv;
+const { hideBin } = require("yargs/helpers");
 
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
@@ -27,12 +28,4 @@ async function invokeAction({ action, id, name, email, phone }) {
       console.warn("\x1B[31m Unknown action type!");
   }
 }
-
-// invokeAction({ action: "get", id: 10 });
-// invokeAction({
-//   action: "add",
-//   name: "Irina Cats",
-//   email: "ira@gmail.com",
-//   phone: "(554) 040-6685",
-// });
-invokeAction({ action: "remove", id: 10 });
+invokeAction(argv);
