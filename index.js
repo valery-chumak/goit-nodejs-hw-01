@@ -15,8 +15,13 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "add":
-      const newContact = await contacts.addContact({ name, email, phone });
-      console.log(newContact);
+      if (argv.name && argv.email && argv.phone) {
+        const newContact = await contacts.addContact({ name, email, phone });
+        console.log(newContact);
+      } else {
+        console.log("Sorry. Write all fields(name. email, phone)");
+      }
+
       break;
 
     case "remove":
